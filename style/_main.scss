@@ -1,0 +1,104 @@
+// _main.scss
+
+// Modules
+@import 'modules/variables';
+@import 'modules/header';
+@import 'modules/cta';
+@import 'modules/footer';
+
+// Pages
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/portfolio';
+
+// Ajoutez d'autres importations au besoin
+
+// Styles globaux
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+}
+
+body {
+	// Autres styles globaux
+	// Utilisez d'autres propriétés définies dans _variables.scss
+	background-color: $main-color;
+	@include body;
+	@include small-screen {
+		line-height: map-get($body-line-heights, small-screen); 
+	}
+}
+ 
+p,
+li {
+	color: mix($secondary-color, $white, 7.5%)
+}
+
+section {
+	padding: 3rem;
+	@include small-screen {
+		padding: 3rem 1.25rem 3rem 1.25rem;
+	}
+}
+//////////////////////////////////////
+
+// _main.scss
+
+.some-selector {
+	@include exampleMixin;
+	// Autres styles spécifiques
+}
+
+//////////////////////////////////////
+.some-selector {
+	font-size: $title-font-size;
+	@media screen and (max-width: 996px) {
+		//Option 1: Utiliser if
+		font-size: if($title-font-size >= 3.5rem, $title-font-size-small, $title-font-size);
+	}
+}
+.some-selector {
+	//Option 2: Utiliser map-get
+	font-size: map-get($title-font-sizes, default);
+	@media screen and (max-width: 996px) {
+		font-size: map-get($title-font-sizes, small-screen);
+	}
+}
+
+//////////////////////////////////////
+ // Déclaration d'une classe de base
+ .base-style {
+ 	color: red;
+ 	font-size: 16px;
+ }
+
+ // Utilisation de @extend pour hériter des styles mais à éviter à cause de la spécificité
+ .new-style {
+ 	@extend .base-style;
+ 	font-weight: bold;
+ }
+
+ //Dans de nombreux cas,l'utilisation de mixins peut être une alternative plus souple et compréhensible.
+// Déclaration d'une mixin
+@mixin base-styles {
+	color: red;
+	font-size: 16px;
+}
+
+// Utilisation de la mixin
+.new-style {
+	@include base-styles;
+	font-weight: bold;
+	// Autres styles spécifiques
+}
+.introooo__image {
+	@include border-image;
+}
+
+.introoooooo__title {
+	@include title1-shadow($main-color);
+}
+.introoooooo__title {
+	@include title-shadow;
+}

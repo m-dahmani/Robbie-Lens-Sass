@@ -1,0 +1,77 @@
+// _about.scss
+// Ajoutez les styles spécifiques à la page d'a-propos
+
+.about {
+  margin: auto;
+  &__title {
+    @include title;
+    text-align: center;
+    @include small-screen-title;
+  }
+}
+
+.carreContainer {
+  @include border-container($purple-bluish);
+  padding: 3.13rem;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 5rem;
+  &__subtitle {
+    @include subtitle;
+    text-align: center;
+    margin-top: 1.875rem;
+  }
+  &__liste {
+    margin-top: 1.875rem;
+  }
+  &+div {
+    text-align: center;
+  }
+}
+
+.tarifs {
+  @include small-screen {
+    display: none;
+  }
+  &__subtitle {
+    @include subtitle;
+    text-align: center;
+  }
+}
+
+table {
+  color: $white;
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0.94rem;
+  border: 0.063rem solid $secondary-color;
+}
+
+td {
+  padding: 5rem;
+}
+
+
+//////////////////////////////////
+//.carreContainer__subtitle
+//.tarifs__subtitle
+
+//h2 {
+//  margin-bottom: 5rem;
+//}
+
+//.about__title
+//h1,
+
+//.carreContainer__subtitle
+//.tarifs__subtitle
+
+//h2 {
+//  text-align: center;
+//}
+

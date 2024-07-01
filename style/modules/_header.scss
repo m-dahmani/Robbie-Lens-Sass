@@ -1,0 +1,36 @@
+.navbar {
+  background-color: $white;
+  padding: 1.25rem 3.13rem;
+  @include small-screen {
+    padding: 1.25rem 1.25rem;
+  }
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    @include small-screen-flex {
+      justify-content: center;
+    }
+  }
+  &__link {
+    margin-left: 1.875rem;
+    color: $black;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    @include small-screen {
+      margin-left: .63rem;
+      margin-right: .63rem;
+    }
+  }
+  &__logo {
+    @include small-screen {
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+
+
+

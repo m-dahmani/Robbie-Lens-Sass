@@ -1,0 +1,17 @@
+.footer {
+  background-color: mix($secondary-color, $white, 7.5%);
+  padding: 1.25rem 3.13rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  @include small-screen {
+    padding: 1.25rem 1.25rem;
+  }
+  &__lien-icone {
+    margin-left: 1.875rem;
+  }
+  &__lien-icone:hover {
+    opacity: 0.5;
+  }
+}

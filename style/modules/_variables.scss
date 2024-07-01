@@ -1,0 +1,179 @@
+/* Design System */
+@use "sass:map";
+@use 'sass:color';
+
+/* Variables par défaut */
+
+/* Colors */
+$main-color: #1f2039;
+$secondary-color: #a5b4fc;
+$black: #000000;
+$white: #ffffff;
+
+// mix($secondary-color, $white, 7.5%); => #f9f8ff;
+$purple-bluish: #8e86b5;
+
+
+
+// Variables pour changer le style à tester 
+// $main-color: #263238;   au lieu  $light-grey: #1f2039;
+// $secondary-color: #FBCFE8; au lieu  $purple-light: #a5b4fc;
+
+/* Text configuration */
+//$body-font: 'Inconsolata', monospace;
+$body-font: 'Manrope', sans-serif;
+//$body-font: 'Montserrat', sans-serif;
+$title-font: 'Montserrat', sans-serif;
+//$title-font: 'Inconsolata', monospace;
+
+$body-font-size: 1.1rem;
+$title-font-size: 3.5rem;
+$subtitle-font-size: 1.5rem;
+
+$body-font-weight: 400;
+$title-font-weight: 600;
+
+$body-line-height: 1.25rem;
+$title-line-height: 5.375rem;
+$subtitle-line-height: 1.75rem;
+
+/* Variables spécifiques aux écrans de petite taille */
+
+//Le problème vient du fait que Sass ne reconnaît pas le changement de valeur de la variable 
+//à l'intérieur du bloc @media lors de la compilation. Les variables Sass sont globales, 
+//et lorsqu' elles sont redéfinies à l'intérieur d' un bloc @media, 
+//cela n'impacte pas les variables globales pour les utilisations ultérieures.
+
+//@media screen and (max-width: 996px) {}
+
+//Pour contourner cela,
+//vous pouvez utiliser une approche où vous utilisez une variable différente spécifiquement pour les écrans de petite taille,
+//puis conditionnez l'utilisation de cette variable dans vos styles. Voici comment vous pourriez le faire :
+
+/* Mobile Variables */
+$title-font-size-small: 2rem;
+
+//@use "sass:map";
+//$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+//@use "sass:map";
+$title-font-sizes: (
+  default: 3.5rem,
+  small-screen: 2rem
+);
+$title-line-heights: (
+  default: 5.375rem,
+  small-screen: 3rem
+);
+$body-line-heights: (
+  default: 1.25rem,
+  small-screen: 1.5rem
+);
+
+/////////////////mixin
+@mixin body {
+  font-family: $body-font;
+  font-size: $body-font-size;
+  font-style: normal;
+  font-weight: $body-font-weight;
+  line-height: map-get($body-line-heights, default);
+  color: $black;
+}
+
+@mixin title {
+  font-family: $title-font;
+  font-weight: $title-font-weight;
+  font-size: $title-font-size;
+  line-height: $title-line-height;
+  color: $secondary-color;
+}
+@mixin subtitle {
+  font-size: $subtitle-font-size;
+  line-height: $subtitle-line-height;
+  color: mix($secondary-color, $white, 7.5%);
+  margin-bottom: 5rem;
+}
+
+@mixin border-container($color) {
+  border-right: .063rem solid $color;
+  border-bottom: .063rem solid $color;
+}
+
+////Media Queries 
+// located in _mixin.scss partial file
+$layout-breakpoint-small: 996px;
+
+@mixin small-screen {
+  @media screen and (max-width: $layout-breakpoint-small) {
+    @content;
+  }
+}
+@mixin small-screen-flex {
+  @media screen and (max-width: $layout-breakpoint-small) {
+    flex-direction: column;
+    @content;
+  }
+}
+@mixin small-screen-title {
+  @media screen and (max-width: $layout-breakpoint-small) {
+    font-size: $title-font-size-small;
+    line-height: map-get($title-line-heights, small-screen);
+  }
+}
+
+
+
+
+
+
+
+//////////////////////////////////////DEMO
+
+
+@mixin exampleMixin {
+  // Définition du mixin
+  background-color: #fff;
+  color: #333;
+  // Autres propriétés du mixin
+}
+
+@mixin border-image {
+  border: 2px solid $secondary-color;
+}
+
+@mixin title1-shadow($secondary-color) {
+  text-shadow: .5rem .5rem $secondary-color;
+}
+
+// voila une instance de title-shadow en utilisant une fonction assombrir
+@mixin title-shadow {
+  text-shadow: .5rem .5rem darken($secondary-color, 35%);
+  text-shadow: .5rem .5rem mix($secondary-color, $purple-bluish, $weight: 40%);
+
+  // Pour utiliser la fonction mix, il vous faut l'appeler comme suit: mix()
+  // Mix prend en paramètre les couleurs que vous souhaitez mixer, ou mélanger, 
+  // suivi de $weight, la quantité de couleur 1 ou 2 vous souhaitez mixer. 
+  // Plus le mombre sera élevé, plus vous aurez de couleur 1, 
+  // au contraire plus vous aurez de couleur 2.
+}
+
+
+
+// Couleur de base
+$secondary-color: #a5b4fc;
+$couleur_base: #a5b4fc;
+$couleur_cible: #8e86b5;
+
+// Calcul du pourcentage de mélange
+// $pourcentage_melange =percentage($couleur_cible / $couleur_base);
+
+// Ajustez le pourcentage de mélange pour obtenir la couleur cible
+$couleur_melangee: mix($couleur_base, $couleur_cible, 50%);
+// $couleur_melangee: mix($couleur_base, $couleur_cible, $pourcentage_melange);
+
+// Affichage du résultat
+@debug "Couleur de base: #{$couleur_base}";
+@debug "Couleur mélangée: #{$couleur_melangee}";
+// @debug "Pourcentage de mélange: #{$pourcentage_melange}%";
+@debug "Couleur mélangée: #{$couleur_melangee}";
+
+

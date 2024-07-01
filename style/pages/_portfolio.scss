@@ -1,0 +1,66 @@
+// _portfolio.scss
+// @import '../_main';
+// Ajoutez les styles spécifiques à la page portfolio
+
+.portfolio__title {
+  @include title;
+  @include small-screen-title;
+}
+.portfolio-photos {
+  background-color: $white;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__subtitle {
+    @include subtitle;
+    color: $black;
+    padding-top: 3rem;
+  }
+}
+
+.grid-paysages {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 18.75rem 18.75rem 18.75rem;
+  gap: 0.94rem;
+  @include small-screen {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-portraits {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 18.75rem 18.75rem;
+  gap: 0.94rem;
+  @include small-screen {
+    grid-template-columns: 1fr;
+  }
+}
+ 
+.lien-conteneur-photo {
+  position: relative;
+  &:hover .photo-hover {
+    display: flex;
+  }
+}
+
+.photo-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: $white;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+
+

@@ -1,0 +1,114 @@
+// _home.scss
+// Ajoutez les styles spécifiques à la page d'accueil
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 62.5rem;
+  margin: auto;
+  @include small-screen-flex {
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    @include title;
+    margin-bottom: 0.94rem;
+    @include small-screen-title;
+  }
+  &__content {
+    margin-bottom: 1.88rem;
+    &--color {
+      color: $secondary-color;
+      font-style: normal;
+    }
+  }
+  .introContainer {
+    padding-right: 5rem;
+    @include small-screen {
+      padding-right: 0;
+      text-align: center;
+      order: 2;
+    }
+  }
+  &__image {
+    @include small-screen {
+      order: 1;
+      margin-bottom: 1.25rem;
+      width: 100%;
+    }
+  }
+}
+
+.accueil-photos {
+  background-color: $white;
+  padding: 5rem;
+  @include small-screen {
+    padding: 1.25rem;
+  }
+  &__subtitle {
+    color: $black;
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  .accueil-photosContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.94rem;
+    justify-content: center;
+    margin-bottom: 0.94rem;
+    @include small-screen-flex;
+  }
+}
+
+.contact {
+  @include small-screen {
+    padding: 3.13rem 1.25rem;
+  }
+  &__subtitle {
+    color: $secondary-color;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 62.5rem;
+  margin: auto;
+  color: $white;
+  &__nom-email {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    @include small-screen-flex {
+      gap: 0;
+    }
+  }
+  &__column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+  }
+}
+
+ 
+input,
+textarea {
+  padding: 0.94rem;
+  border-radius: 0.188rem;
+  border: none;
+}
+
+label {
+  margin-bottom: 0.63rem;
+}
+
+input[type='submit'] {
+  width: 12.5rem;
+  margin: auto;
+  margin-top: 1.88rem;
+}
+

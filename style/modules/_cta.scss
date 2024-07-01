@@ -1,0 +1,14 @@
+.cta {
+  display: inline-block;
+  background: linear-gradient(#8e86b5, #acaeed);
+  border-radius: 3.13rem;
+  padding: 1.25rem 1.875rem;
+  text-decoration: none;
+  font-family: $title-font;
+  color: $white;
+  &:hover {
+    background: linear-gradient(#696484, #8788ba);
+    text-decoration: none;
+  }
+}
+
